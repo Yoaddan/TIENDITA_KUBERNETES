@@ -1,0 +1,145 @@
+{
+  "swagger": "2.0",
+  "info": {
+      "title": "Ferreteria API",
+      "version": "1.0",
+      "description": "API for managing hardware store products"
+  },
+  "paths": {
+      "/api/products": {
+          "get": {
+              "summary": "Get a list of products",
+              "responses": {
+                  "200": {
+                      "description": "Successful operation",
+                      "schema": {
+                          "type": "array",
+                          "items": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "category": {"type": "string"},
+                                  "price": {"type": "number"}
+                              },
+                              "example": {
+                                  "name": "Hammer",
+                                  "category": "Tools",
+                                  "price": 15.99
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/api/products/{product_name}": {
+          "get": {
+              "summary": "Get a product by name",
+              "parameters": [
+                  {
+                      "name": "product_name",
+                      "in": "path",
+                      "required": true,
+                      "type": "string"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Successful operation",
+                      "schema": {
+                          "type": "object",
+                          "properties": {
+                              "name": {"type": "string"},
+                              "category": {"type": "string"},
+                              "price": {"type": "number"}
+                          },
+                          "example": {
+                              "name": "Screwdriver",
+                              "category": "Tools",
+                              "price": 7.99
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/api/products/category/{category}": {
+          "get": {
+              "summary": "Get products by category",
+              "parameters": [
+                  {
+                      "name": "category",
+                      "in": "path",
+                      "required": true,
+                      "type": "string"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Successful operation",
+                      "schema": {
+                          "type": "array",
+                          "items": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "category": {"type": "string"},
+                                  "price": {"type": "number"}
+                              },
+                              "example": {
+                                  "name": "Wrench",
+                                  "category": "Tools",
+                                  "price": 12.99
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/api/products/price/{price}": {
+          "get": {
+              "summary": "Get products by price",
+              "parameters": [
+                  {
+                      "name": "price",
+                      "in": "path",
+                      "required": true,
+                      "type": "number"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Successful operation",
+                      "schema": {
+                          "type": "array",
+                          "items": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "category": {"type": "string"},
+                                  "price": {"type": "number"}
+                              },
+                              "example": {
+                                  "name": "Nails",
+                                  "category": "Building Materials",
+                                  "price": 5.99
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  },
+  "definitions": {
+      "Product": {
+          "type": "object",
+          "properties": {
+              "name": {"type": "string"},
+              "category": {"type": "string"},
+              "price": {"type": "number"}
+          }
+      }
+  }
+}
