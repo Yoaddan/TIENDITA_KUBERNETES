@@ -32,6 +32,6 @@ CORS(app, resources={r'/api/products': {'origins': '*'}})
 
 if __name__ == '__main__':
     try:
-        app.run(debug=True)
+        app.run(debug=True, host='0.0.0.0')
     finally:
         db_connector.close_connection()
